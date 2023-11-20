@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Express.js Projesi</title>
+</head>
+<body>
+  <h1>Merhaba, Express.js sunucusuna hoş geldiniz!</h1>
+  <div id="genderInfo">
+    <p>Cinsiyet Tahmini: <span id="genderResult"></span></p>
+  </div>
+
+  <script>
+    // API çağrısını yap
+    fetch('/api/gender')
+      .then(response => response.json())
+      .then(data => {
+        const genderResult = document.getElementById('genderResult');
+        genderResult.textContent = data.gender || 'Bilgi yok';
+      })
+      .catch(error => console.error('API Hatası:', error));
+  </script>
+</body>
+</html>
